@@ -239,7 +239,7 @@ public class InitialLoginSessionHandler implements MinecraftSessionHandler {
                         server.getVersion().getName() + "/" + server.getVersion().getVersion())
                 .uri(URI.create(url))
                 .build();
-      // 网易版新增以下 2 行
+        // 网易版新增以下 2 行
       }
 
       final HttpClient httpClient = server.createHttpClient();
@@ -273,9 +273,9 @@ public class InitialLoginSessionHandler implements MinecraftSessionHandler {
               final GameProfile profile;
 
               if (USE_NETEASE_VERIFY) {
-                com.google.gson.JsonObject data_json = com.google.gson.JsonParser.parseString(response.body())
+                com.google.gson.JsonObject dataJson = com.google.gson.JsonParser.parseString(response.body())
                     .getAsJsonObject();
-                String id = data_json.get("entity").getAsJsonObject().get("id").getAsString();
+                String id = dataJson.get("entity").getAsJsonObject().get("id").getAsString();
                 profile = new GameProfile(id, login.getUsername(), List.of(new GameProfile.Property("", "", "")));
               } else {
                 profile = GENERAL_GSON.fromJson(response.body(), GameProfile.class);
@@ -364,15 +364,15 @@ public class InitialLoginSessionHandler implements MinecraftSessionHandler {
   }
   // 网易版新增以下 12 行
 
-  public static class HasJoinedRequest {
+  private static class HasJoinedRequest {
     private String username;
     private String serverId;
-    private String gameID;
+    private String gameId;
 
-    public HasJoinedRequest(String username, String serverId, String gameID) {
+    private HasJoinedRequest(String username, String serverId, String gameId) {
       this.username = username;
       this.serverId = serverId;
-      this.gameID = gameID;
+      this.gameId = gameId;
     }
   }
 }

@@ -238,7 +238,7 @@ public class AuthSessionHandler implements MinecraftSessionHandler {
         } else {
           // 网易版修改以下 1 行代码
           success.setProperties(player.getGameProfileProperties());
-        // 网易版新增以下 2 行代码
+          // 网易版新增以下 2 行代码
         }
 
         success.setUuid(player.getUniqueId());
