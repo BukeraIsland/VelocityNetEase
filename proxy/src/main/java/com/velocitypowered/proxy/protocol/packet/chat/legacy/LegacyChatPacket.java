@@ -91,7 +91,7 @@ public class LegacyChatPacket implements MinecraftPacket {
 
   @Override
   public void decode(ByteBuf buf, ProtocolUtils.Direction direction, ProtocolVersion version) {
-    message = ProtocolUtils.readString(buf);
+    message = ProtocolUtils.readString(buf, 256);
     if (direction == ProtocolUtils.Direction.CLIENTBOUND
         && version.noLessThan(ProtocolVersion.MINECRAFT_1_8)) {
       type = buf.readByte();
